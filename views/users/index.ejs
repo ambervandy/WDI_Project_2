@@ -7,8 +7,8 @@
 	<ul>
 		<% for(var i = 0; i < users.length; i++) { %>
 			<li>
-				<%= users.username %>
-				<%= users.profileImg %>
+				<a href="/users/<%= users[i].id %>"><%= users[i].username %></a>
+				<%= users[i].profileImg %>
 			</li>
 		<% } %>
 	</ul>

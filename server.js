@@ -1,11 +1,10 @@
 // REQUIREMENTS
 var express 		= require('express');
-	app				= express();
-	port 			= process.env.PORT || 3000;
-	mongoose		= require('mongoose');
-	morgan			= require('morgan');
 	bodyParser 		= require('body-parser');
 	methodOverride 	= require('method-override');
+	mongoose		= require('mongoose');
+	port 			= process.env.PORT || 3000;
+	app				= express();
 	db				= mongoose.connection;
 
 mongoose.connect('mongodb://localhost:27017/project_2');
@@ -38,8 +37,8 @@ app.use(methodOverride(function(req, res) {
 // app.use(passport.session());
 
 
-app.use('/trips', tripsController);
 app.use('/users', usersController);
+app.use('/trips', tripsController);
 
 
 // SHOW WELCOME PAGE

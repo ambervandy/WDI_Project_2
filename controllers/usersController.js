@@ -19,9 +19,7 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
 	var newUser = new User(req.body);
 	newUser.save(function(err, data) {
-		res.redirect('/users', { 
-			users: data 
-		});
+		res.redirect('/users');
 	});
 });
 
@@ -45,12 +43,38 @@ router.get('/:id', function(req, res) {
 	});
 });
 
+
 // EDIT
+router.get('/:id/edit', function(req, res) {
+	User.findById(req.params.id, function(err, data) {
+		res.render('users/edit.ejs', data);
+	});
+});
+
 
 // UPDATE
+router.put('/:id', function(req, res) {
+	User.findByIdAndUpdate(req.params.id, req.body, function(err, data) {
+		res.redirect('/users/' + req.params.id);
+	});	
+});
+
 
 // DESTROY
-
+router.delete('/:id/delete', function(req, res) {
+	User.findByIdAndRemove(req.params.id, function(err, data) {
+		res.redirect('/users');
+	});	
+});
 
 
 module.exports = router;
+
+
+
+
+
+
+
+
+

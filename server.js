@@ -11,14 +11,16 @@ var express 		= require('express');
 mongoose.connect('mongodb://localhost:27017/project_2');
 
 // PASSPORT
+// require('.config/passport.js')(passport);
 
 
 // CONTROLLERS
 var usersController = require('./controllers/usersController');
 	tripsController = require('./controllers/tripsController');
-	logger			= require
+
 
 // MIDDLEWARE
+app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride(function(req, res) {
@@ -29,6 +31,21 @@ app.use(methodOverride(function(req, res) {
 	}
 }));
 
+
+// PASSPORT
+// app.use(session({ secret: 'winewinewineisfine' }));
+// app.use(passport.initialize());
+// app.use(passport.session());
+
+
+app.use('/trips', tripsController);
+app.use('/users', usersController);
+
+
+// SHOW WELCOME PAGE
+app.get('/', function(req, res) {
+	res.render('index.ejs');
+});
 
 
 // LISTENING

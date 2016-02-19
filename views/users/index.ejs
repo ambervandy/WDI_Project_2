@@ -1,8 +1,16 @@
 <html>
 <head>
-	<title>USERS</title>
+	<title>ALL USERS</title>
 </head>
 <body>
-	<h1>USER INDEX works!</h1>
+	<h1>ALL USERS</h1>
+	<ul>
+		<% for(var i = 0; i < users.length; i++) { %>
+			<li>
+				<%= users.username %>
+				<%= users.profileImg %>
+			</li>
+		<% } %>
+	</ul>
 </body>
 </html>

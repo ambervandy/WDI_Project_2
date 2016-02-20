@@ -7,12 +7,11 @@ var express 		= require('express');
 	session			= require('express-session');
 	port 			= process.env.PORT || 3000;
 	app				= express();
-	db				= mongoose.connection;
 
 mongoose.connect('mongodb://localhost:27017/project_2');
 
 // PASSPORT
-require('./config/passport')(passport);
+require('./config/passport.js')(passport);
 
 
 // CONTROLLERS
@@ -34,6 +33,11 @@ app.use(methodOverride('_method'));
 app.use('/users', usersController);
 app.use('/trips', tripsController);
 
+// make variable login available
+app.use(function(req, res, next) {
+    res.locals.login = req.isAuthenticated();
+    next();
+});
 
 // SHOW WELCOME PAGE
 app.get('/', function(req, res) {
@@ -42,9 +46,14 @@ app.get('/', function(req, res) {
 
 
 // LISTENING
-// db.once('open', function() {
-// 	console.log('----- MONGOOSE IS RUNNING -----');
+mongoose.connection.once('open', function() {
+	console.log('----- MONGOOSE IS RUNNING -----');
 	app.listen(port, function() {
 		console.log("----- SERVER IS RUNNING: PORT " + port + " -----");
 	});
-// });
+});
+
+
+
+
+

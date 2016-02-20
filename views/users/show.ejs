@@ -4,15 +4,19 @@
 </head>
 <body>
 	<!-- nav bar -->
-	
-	<!-- Link to add a new trip -->
-    <a href="/users/<%= users.id %>/addTrip">ADD TRIP</a>
 
-    <!-- Page title -->
+	<!-- Page title -->
 	<h1><%= users.username %>'s Show Page Works!</h1>
+	
+	<!-- need if statement, if user id = this user can add trip and edit profile -->
+	<% if (usertrue) { %>
+		<!-- Link to add a new trip -->
+	    <a href="/users/<%= users.id %>/addTrip">ADD TRIP</a>
 
 	<!-- Link to edit profile -->
 	<a href="/users/<%= users.id %>/edit" >Edit Your Profile</a>
+
+	<% } %>
 
 	<!-- Show list of trips -->
 	<h3>All Trips:</h3>

@@ -3,7 +3,24 @@
 	<title>USERS</title>
 </head>
 <body>
+	<!-- nav bar -->
+	
+	<!-- Link to add a new trip -->
+    <a href="/users/<%= users.id %>/addTrip">ADD TRIP</a>
+
+    <!-- Page title -->
 	<h1><%= users.username %>'s Show Page Works!</h1>
+
+	<!-- Link to edit profile -->
 	<a href="/users/<%= users.id %>/edit" >Edit Your Profile</a>
+
+	<!-- Show list of trips -->
+	<h3>All Trips:</h3>
+	<ul>
+		<% for(var i = 0; i < users.trips.length; i++) { %>
+			<!-- These need to link to the trip's show page -->
+			<li><a href="/trips/<%= users.trips[i].id %>"><%= users.trips[i].destination %></a></li>
+		<% } %>
+	<ul>
 </body>
 </html>

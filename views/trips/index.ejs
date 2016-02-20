@@ -3,6 +3,12 @@
 	<title>TRIPS</title>
 </head>
 <body>
-	<h1>TRIPS INDEX works!</h1>
+	<!-- nav bar -->
+	<h1>ALL TRIPS</h1>
+
+	<!-- show list of all trips -->
+	<% for(var i = 0; i < trips.length; i++) { %>
+		<li><a href="/trips/<%= trips[i].id %>"><%= trips[i].destination %></li>
+	<% } %>
 </body>
 </html>

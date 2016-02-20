@@ -3,7 +3,17 @@
 	<title>NEW TRIPS</title>
 </head>
 <body>
-	<h1>NEW TRIPS works!</h1>
-	<!-- FORM FOR NEW DESTINATION -->
+	<!-- nav bar -->
+	<h1>NEW TRIP works!</h1>
+	<form action="/users/<%= users.id %>/addTrip" method="POST">
+		<input type="text" name="destination" placeholder="Destination"></br></br>
+		<input type="text" name="tripImg" placeholder="Trip Image URL"></br></br>
+		<textarea name="packing_list" placeholder="Recommended Packing List"></textarea></br></br>
+		<input type="date" name="date_start"></br></br>
+		<input type="date" name="date_finish"></br></br>
+		<textarea name="itinerary" placeholder="Description/Itinerary"></textarea></br></br>
+		<input type="text" name="trip_rating" placeholder="Trip Rating"></br></br>
+		<input type="Submit">
+	</form>
 </body>
 </html>

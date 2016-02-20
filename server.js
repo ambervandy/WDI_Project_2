@@ -3,6 +3,8 @@ var express 		= require('express');
 	bodyParser 		= require('body-parser');
 	methodOverride 	= require('method-override');
 	mongoose		= require('mongoose');
+	passport        = require('passport');
+	session			= require('express-session');
 	port 			= process.env.PORT || 3000;
 	app				= express();
 	db				= mongoose.connection;
@@ -10,7 +12,7 @@ var express 		= require('express');
 mongoose.connect('mongodb://localhost:27017/project_2');
 
 // PASSPORT
-// require('.config/passport.js')(passport);
+require('./config/passport')(passport);
 
 
 // CONTROLLERS
@@ -22,20 +24,12 @@ var usersController = require('./controllers/usersController');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(methodOverride(function(req, res) {
-	if(req.body && typeof req.body === 'object' && '_method' in req.body) {
-		var method = req.body._method;
-		delete req.body._method;
-		return method;
-	}
-}));
 
+app.use(session({ secret: 'winewinewineisfine' }));
+app.use(passport.initialize());
+app.use(passport.session());
 
-// PASSPORT
-// app.use(session({ secret: 'winewinewineisfine' }));
-// app.use(passport.initialize());
-// app.use(passport.session());
-
+app.use(methodOverride('_method'));
 
 app.use('/users', usersController);
 app.use('/trips', tripsController);
@@ -48,9 +42,9 @@ app.get('/', function(req, res) {
 
 
 // LISTENING
-db.once('open', function() {
-	console.log('----- MONGOOSE IS RUNNING -----');
+// db.once('open', function() {
+// 	console.log('----- MONGOOSE IS RUNNING -----');
 	app.listen(port, function() {
 		console.log("----- SERVER IS RUNNING: PORT " + port + " -----");
 	});
-});
+// });

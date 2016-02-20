@@ -1,8 +1,37 @@
 <html>
 <head>
-	<title>TRIPS</title>
+	<title><%= trips.destination %></title>
 </head>
 <body>
-	<h1>TRIPS SHOW works!</h1>
+	<!-- need to be able to grab the user's username here -->
+	<!-- nav bar -->
+
+	<a href="/trips/<%= trips.id %>/edit" >EDIT TRIP</a>
+
+	<h1><%= trips.destination %></h1>
+
+	<div>mapImg</div>
+
+	<div><%= trips.trip_rating %></div>
+
+	<div>tripImg</div>
+
+	<h3>DATES VISITED</h3>
+
+	<div><%= trips.date_start %> - <%= trips.date_finish %></div>
+
+	<h3>RECOMMENDED PACKING LIST</h3>
+
+	<p><%= trips.packing_list %></p>
+
+
+	<h3>ITINERARY</h3>
+	
+	<p><%= trips.itinerary %></p>
+
+	<form action="/trips/<%= trips.id %>?_method=DELETE" method="POST">
+      	<button>DELETE TRIP</button>
+    </form>
+
 </body>
 </html>

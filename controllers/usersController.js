@@ -44,19 +44,49 @@ router.get('/:id', function(req, res) {
 });
 
 
-// EDIT
-router.get('/:id/edit', function(req, res) {
+// NEW TRIP PAGE
+router.get('/:id/addTrip', function(req, res) {
 	User.findById(req.params.id, function(err, data) {
-		res.render('users/edit.ejs', data);
+		res.render('trips/new.ejs', {
+			users: data
+		});
+	});	
+});
+
+
+// NEW TRIP ROUTE
+router.post('/:id/addTrip', function(req, res) {
+	// res.send('This works!');
+	User.findById(req.params.id, function(err, newUser) {
+		var newTrip = new Trip(req.body);
+		newTrip.save(function(err, trip) {
+			newUser.trips.push(trip);
+			newUser.save(function(err, data) {
+				res.redirect('/users/' + req.params.id);
+			});
+		});
 	});
+});
+
+// EDIT TRIP
+// router.get('/:id/editTrip', function(req, res) {
+	
+// });
+
+
+// EDIT
+router.get('/:id/edit', function(req, res){
+  User.findById(req.params.id, function(err, data){
+    res.render('users/edit.ejs',data);
+  });
 });
 
 
 // UPDATE
-router.put('/:id', function(req, res) {
-	User.findByIdAndUpdate(req.params.id, req.body, function(err, data) {
-		res.redirect('/users/' + req.params.id);
-	});	
+router.put('/:id', function(req, res){
+  User.findByIdAndUpdate(req.params.id, req.body, function(err, data){
+    res.redirect('/users/' + req.params.id);
+  });
 });
 
 

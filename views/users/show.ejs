@@ -12,7 +12,7 @@
 	<!-- need if statement, if user id = this user can add trip and edit profile -->
 	<% if (usertrue) { %>
 		<!-- Link to add a new trip -->
-	    <a href="/users/<%= users.id %>/addTrip">ADD TRIP</a>
+	    <a href="/users/<%= users.id %>/trips">ADD TRIP</a>
 
 	<!-- Link to edit profile -->
 	<a href="/users/<%= users.id %>/edit" >Edit Your Profile</a>
@@ -24,7 +24,9 @@
 	<ul>
 		<% for(var i = 0; i < users.trips.length; i++) { %>
 			<!-- These need to link to the trip's show page -->
-			<li><a href="/trips/<%= users.trips[i].id %>"><%= users.trips[i].destination %></a></li>
+			<li><a href="/trips/<%= users.trips[i].id %>"><%= users.trips[i].destination %></a>
+				<!-- <input type="hidden" name="trip_id" value="<%= users.trips[i].id %>" /> -->
+			</li>
 		<% } %>
 	<ul>
 </body>

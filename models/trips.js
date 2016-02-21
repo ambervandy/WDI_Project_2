@@ -9,7 +9,8 @@ var tripSchema = mongoose.Schema({
 	date_start:Date,
 	date_finish:Date,
 	itinerary:String,
-	trip_rating:String
+	trip_rating:String,
+	user_id:String
 });
 
 

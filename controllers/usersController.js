@@ -21,17 +21,6 @@ router.get('/', function(req, res) {
 });
 
 
-
-// CREATE
-// router.post('/', function(req, res) {
-// 	var newUser = new User(req.body);
-// 	newUser.save(function(err, data) {
-// 		res.redirect('/users');
-// 	});
-// });
-
-
-
 // SIGN UP / NEW
 router.post('/', passport.authenticate('local-signup', {
 	// redirect back to the signup page if there is an error
@@ -53,6 +42,7 @@ router.get('/json', function(req, res) {
 });
 
 
+
 // LOGIN
 router.post('/login', passport.authenticate('local-login', { 
 	// failure redirects to index
@@ -63,6 +53,7 @@ router.post('/login', passport.authenticate('local-login', {
 });
 
 
+
 // LOGOUT
 router.get('/logout', function(req, res) {
 	// log user out
@@ -70,6 +61,7 @@ router.get('/logout', function(req, res) {
 	// redirect to index
 	res.redirect('/');
 });
+
 
 
 // SHOW
@@ -86,8 +78,9 @@ router.get('/:id', function(req, res) {
 });
 
 
+
 // NEW TRIP PAGE
-router.get('/:id/addTrip', function(req, res) {
+router.get('/:id/trips', function(req, res) {
 	// res.send('This works!');
 	// for that user, add the new trip
 	User.findById(req.params.id, function(err, data) {
@@ -99,8 +92,9 @@ router.get('/:id/addTrip', function(req, res) {
 });
 
 
+
 // NEW TRIP ROUTE
-router.post('/:id/addTrip', function(req, res) {
+router.post('/:id/trips', function(req, res) {
 	// res.send('This works!');
 	// find user by id params
 	User.findById(req.params.id, function(err, newUser) {
@@ -120,11 +114,6 @@ router.post('/:id/addTrip', function(req, res) {
 });
 
 
-// EDIT TRIP
-// router.get('/:id/editTrip', function(req, res) {
-	
-// });
-
 
 // EDIT
 router.get('/:id/edit', function(req, res){
@@ -134,6 +123,7 @@ router.get('/:id/edit', function(req, res){
 		res.render('users/edit.ejs',data);
 	});
 });
+
 
 
 // UPDATE
@@ -146,6 +136,7 @@ router.put('/:id', function(req, res){
 });
 
 
+
 // DESTROY
 router.delete('/:id', function(req, res) {
 	// find user and remove by id params in url
@@ -155,6 +146,21 @@ router.delete('/:id', function(req, res) {
 	});	
 });
 
+
+
+// DELETE SPECIFIC TRIP FROM USER
+router.delete('/:id/trips', function(req, res){
+	// find user by url params
+    User.findById(req.params.id, function(err,user){
+    	// parent.child.id(child_id).remove();
+    	user.trips.id(req.body.trip_id).remove();
+    	// save user after trip deletion
+    	user.save(function(){
+    		// redirect to user show page
+      		res.redirect('/users/' + req.params.id);
+    	});
+  	});
+});
 
 
 
@@ -173,7 +179,16 @@ module.exports = router;
 
 
 
+// ========================== TRASH CAN =============================
 
+
+// CREATE
+// router.post('/', function(req, res) {
+// 	var newUser = new User(req.body);
+// 	newUser.save(function(err, data) {
+// 		res.redirect('/users');
+// 	});
+// });
 
 
 

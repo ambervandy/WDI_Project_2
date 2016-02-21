@@ -148,22 +148,6 @@ router.delete('/:id', function(req, res) {
 
 
 
-// DELETE SPECIFIC TRIP FROM USER
-router.delete('/:id/trips', function(req, res){
-	// find user by url params
-    User.findById(req.params.id, function(err,user){
-    	// parent.child.id(child_id).remove();
-    	user.trips.id(req.body.trip_id).remove();
-    	// save user after trip deletion
-    	user.save(function(){
-    		// redirect to user show page
-      		res.redirect('/users/' + req.params.id);
-    	});
-  	});
-});
-
-
-
 // ROUTE MIDDLEWARE TO MAKE SURE USER IS LOGGED IN
 function isLoggedIn(req, res, next) {
     // if user is authenticated in the session, carry on 
@@ -191,6 +175,19 @@ module.exports = router;
 // });
 
 
+// // DELETE SPECIFIC TRIP FROM USER
+// router.delete('/:id/trips', function(req, res){
+// 	// find user by url params
+//     User.findById(req.params.id, function(err,user){
+//     	// parent.child.id(child_id).remove();
+//     	user.trips.id(req.body.trip_id).remove();
+//     	// save user after trip deletion
+//     	user.save(function(){
+//     		// redirect to user show page
+//       		res.redirect('/users/' + req.params.id);
+//     	});
+//   	});
+// });
 
 
 

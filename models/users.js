@@ -9,6 +9,7 @@ var userSchema = mongoose.Schema({
 	email:String,
 	password:String,
 	profileImg:String,
+	originCity:String,
 	trips: [tripSchema]
 });
 

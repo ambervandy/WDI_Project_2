@@ -6,10 +6,14 @@
 	<!-- nav bar -->
 	<h1>EDIT USER</h1>
 	<form action="/users/<%= id %>?_method=PUT" method="POST">
+		<span>USERNAME:</span></br>
 		<input type="text" name="username" value="<%= username %>"></br></br>
+		<span>EMAIL:</span></br>
 		<input type="text" name="email" value="<%= email %>"></br></br>
-		<input type="text" name="password" value="<%= password %>"></br></br>
+		<span>PROFILE IMAGE URL:</span></br>
 		<input type="text" name="profileImg" value="<%= profileImg %>"></br></br>
+		<span>ORIGIN CITY:</span></br>
+		<input type="text" name="originCity" value="<%= originCity %>"></br></br>
 		<button>UPDATE</button>
 	</form>
 

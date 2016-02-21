@@ -1,36 +1,77 @@
 <html>
 <head>
 	<title><%= trips.destination %></title>
+	<link rel="stylesheet" type="text/css" href="/css/trips/show.css">
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAF13D52tQ7DIimjcN7gRz1gkJTZElqPgw"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script type="text/javascript" src="/js/tripShow.js"></script>
 </head>
 <body>
 	<!-- need to be able to grab the user's username here -->
 	<!-- nav bar -->
+	<!-- nav bar -->
+	<ul id="nav">
+		<li><a href="/">HOME</a></li>
+		<li><a href="/users">TRAVELERS</a></li>
+		<li><a href="/trips">TRIPS</a></li>
+		<li><a href="/users/<%= trips.user_id %>">PROFILE</a></li>
+		<li><a href="/users/logout">LOGOUT</a></li>
+	</ul>
 
-	<a href="/trips/<%= trips.id %>/edit" >EDIT TRIP</a>
+	<!-- profile title container -->
+	<div id="tripContainer">
+		<div id="smallMapContainer">
+			<div id="mapImg"></div>
+		</div>
 
-	<h1><%= trips.destination %></h1>
+		<!-- Page title -->
+		<div id="tripInfo">
+			<h1><%= trips.destination %></h1>
+			<div><%= trips.trip_rating %></div>
+		</div>
+	</div>
 
-	<div>mapImg</div>
+	<!-- trip img -->
+	<div id="tripImgContainer">
+		<img src="<%= trips.tripImg %>" >
+	</div>
 
-	<div><%= trips.trip_rating %></div>
-
-	<div>tripImg</div>
-
-	<h3>DATES VISITED</h3>
-
-	<div><%= trips.date_start %> - <%= trips.date_finish %></div>
-
-	<h3>RECOMMENDED PACKING LIST</h3>
-
-	<p><%= trips.packing_list %></p>
+	<!-- dates visited -->
+	<div id="dates">
+		<h3>DATES VISITED</h3>
+		<p><%= trips.date_start %> - </p>
+		<p><%= trips.date_finish %></p>
+	</div>
 
 
-	<h3>ITINERARY</h3>
-	
-	<p><%= trips.itinerary %></p>
+	<!-- packing list -->
+	<div id="packingList">
+		<h3>RECOMMENDED PACKING LIST</h3>
+		<p><%= trips.packing_list %></p>
+	</div>
 
+	<!-- itinerary -->
+	<div id="itinerary">
+		<h3>ITINERARY</h3>
+		<p><%= trips.itinerary %></p>
+	</div>
+
+	<!-- different -->
+	<div id="different">
+		<h3>THINGS I WOULD HAVE DONE DIFFERENTLY</h3>
+		<p><%= trips.different %></p>
+	</div>
+
+
+	<!-- need to figure out how to hide this for other users -->
+		<!-- Link to edit profile -->
+	    <form action="/trips/<%= trips.id %>/edit">
+		    <input type="submit" value="UPDATE">
+		</form>
+
+	<!-- need to figure out how to hide this for other users -->
 	<form action="/trips/<%= trips.id %>?_method=DELETE" method="POST">
-      	<button>DELETE TRIP</button>
+      	<input type="submit" value="DELETE">
     </form>
 
 </body>

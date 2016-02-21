@@ -6,12 +6,26 @@
 	<!-- nav bar -->
 	<h1>EDIT TRIPS works!</h1>
 	<form action="/trips/<%= id %>?_method=PUT" method="POST">
+		<span>DESTINATION:</span></br>
 		<input type="text" name="destination" value="<%= destination %>"></br></br>
+		<span>LATITUDE:</span></br>
+		<input type="text" name="lat" value="<%= lat %>"></br></br>
+		<span>LONGITUDE:</span></br>
+		<input type="text" name="lng" value="<%= lng %>"></br></br>
+		<span>TRIP IMAGE URL:</span></br>
 		<input type="text" name="tripImg" value="<%= tripImg %>"></br></br>
+		<!-- need to use jquery to add additional fields to add things here to a ul instead of textarea -->
+		<span>RECOMMENDED PACKING LIST:</span></br>
 		<textarea name="packing_list"><%= packing_list %></textarea></br></br>
+		<span>TRIP START DATE:</span></br>
 		<input type="date" name="date_start" value="<%= date_start %>"></br></br>
+		<span>TRIP FINISH DATE:</span></br>
 		<input type="date" name="date_finish" value="<%= date_finish %>"></br></br>
+		<span>ITINERARY:</span></br>
 		<textarea name="itinerary"><%= itinerary %></textarea></br></br>
+		<span>WHAT YOU WOULD DO DIFFERENTLY NEXT TIME:</span></br>
+		<textarea name="different"></textarea></br></br>
+		<span>RATING:</span></br>
 		<input type="text" name="trip_rating" value="<%= trip_rating %>"></br></br>
 		<input type="Submit">
 	</form>

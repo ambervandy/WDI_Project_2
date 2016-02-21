@@ -1,33 +1,86 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<title>USERS</title>
+	<title><%= users.username %></title>
+	<link rel="stylesheet" type="text/css" href="/css/users/show.css">
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAF13D52tQ7DIimjcN7gRz1gkJTZElqPgw"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script type="text/javascript" src="/js/userShow.js"></script>
 </head>
 <body>
 	<!-- nav bar -->
-	<a href="/users">See All Users</a>
+	<ul id="nav">
+		<li><a href="/">HOME</a></li>
+		<li><a href="/users">TRAVELERS</a></li>
+		<li><a href="/trips">TRIPS</a></li>
+		<li><a href="/users/<%= users.id %>">PROFILE</a></li>
+		<li><a href="/users/logout">LOGOUT</a></li>
+	</ul>	
 
-	<!-- Page title -->
-	<h1><%= users.username %>'s Show Page Works!</h1>
-	
-	<!-- need if statement, if user id = this user can add trip and edit profile -->
+	<div id="profileContainer">
+		<div id="profileImg">
+			<img src="<%= users.profileImg %>">
+		</div>
+
+
+		<!-- Page title -->
+		<div id="userInfo">
+			<h1><%= users.username %></h1>
+			<p><%= users.originCity %></p>
+		</div>
+	</div>
+
+	<!-- User trip map -->
+	<div id="map-Container">
+		<div id="userMap"></div>
+	</div>	
+
+	<!-- need if statement, if user id = this user can add trip -->
 	<% if (usertrue) { %>
 		<!-- Link to add a new trip -->
-	    <a href="/users/<%= users.id %>/trips">ADD TRIP</a>
-
-	<!-- Link to edit profile -->
-	<a href="/users/<%= users.id %>/edit" >Edit Your Profile</a>
-
+	    <form action="/users/<%= users.id %>/trips">
+		    <input type="submit" value="ADD TRIP">
+		</form>
 	<% } %>
 
 	<!-- Show list of trips -->
-	<h3>All Trips:</h3>
-	<ul>
-		<% for(var i = 0; i < users.trips.length; i++) { %>
-			<!-- These need to link to the trip's show page -->
-			<li><a href="/trips/<%= users.trips[i].id %>"><%= users.trips[i].destination %></a>
-				<!-- <input type="hidden" name="trip_id" value="<%= users.trips[i].id %>" /> -->
-			</li>
-		<% } %>
-	<ul>
+	<div id="tripContainer">
+		<h3>All Trips:</h3>
+		<ul id="tripUl">
+			<% for(var i = 0; i < users.trips.length; i++) { %>
+				<!-- These need to link to the trip's show page -->
+				<li class="tripLi"><a href="/trips/<%= users.trips[i].id %>"><%= users.trips[i].destination %></a>
+					<!-- <input type="hidden" name="trip_id" value="<%= users.trips[i].id %>" /> -->
+				</li>
+			<% } %>
+		<ul>
+	</div>
+
+	<!-- need if statement, if user id = this user can edit profile -->
+	<% if (usertrue) { %>
+		<!-- Link to edit profile -->
+	    <form action="/users/<%= users.id %>/edit">
+		    <input type="submit" value="EDIT PROFILE">
+		</form>
+	<% } %>
+		
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

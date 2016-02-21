@@ -12,8 +12,8 @@ var tripSchema = mongoose.Schema({
 	different:String,
 	trip_rating:String,
 	user_id:String,
-	lat:String,
-	lng:String
+	lat:Number,
+	lng:Number
 });
 
 

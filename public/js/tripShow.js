@@ -3,15 +3,26 @@ $(function() {
 
 	// Google Map Settings - create variable for the map
 	var intializeMap = function () {
-		// create variable for new map
-		var map = new google.maps.Map(document.getElementById('mapImg'), {
-		  zoom: 2,
-		  center: new google.maps.LatLng(40.696829, -73.935232),
-		  mapTypeId: google.maps.MapTypeId.ROADMAP
-		});
+		// get trip id
+		var $tripId = $("#hidden").val();
+		// console.log($tripId);
+		// ajax call to get lat and lng from 'trips/json' route
+		$.ajax('/trips/' + $tripId + '/json')
+		.done(function(result) {
+			// create variable for new map
+			var map = new google.maps.Map(document.getElementById('mapImg'), {
+				zoom: 5,
+				center: {lat: result.lat, lng: result.lng},
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			});
 
-		// Add new markers
-		// addMarkers(map);
+			var marker = new google.maps.Marker({
+				position: {lat: result.lat, lng: result.lng},
+				map: map,
+				title: result.destination
+			});
+
+		});
 
 	} // end initialize
 
@@ -20,19 +31,6 @@ $(function() {
 
 }); // end window onload
 
-// function for adding markers
-var addMarkers = function(map) {
-
-	//ajax call to get locations data from 'locations/json' route
-	$.ajax('/trips/json');
-		var marker = new google.maps.Marker ({
-		    map: map,
-		    icon: 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png',
-		    position: { lat: result[i].lat, lng: result[i].lng },
-		    title: result[i].name
-		});
-	});
-} // end addMarkers
 
 
 

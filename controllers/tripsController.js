@@ -25,6 +25,14 @@ router.get('/json', function(req, res) {
 });
 
 
+// JSON FOR INDIVIDUAL TRIP
+router.get('/:id/json', function(req, res) {
+	Trip.findById(req.params.id, function(err, data) {
+		res.send(data);
+	});
+});
+
+
 // SHOW
 router.get('/:id', function(req, res) {
 	Trip.findById(req.params.id, function(err, data) {

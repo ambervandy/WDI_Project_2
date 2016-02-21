@@ -42,6 +42,16 @@ router.get('/json', function(req, res) {
 });
 
 
+// JSON FOR SINGLE USER JSON LOCATIONS ONLY
+router.get('/:id/json', function(req, res) {
+	// find the user by id
+	User.findById(req.params.id, function(err, data) {
+		// send json data
+		res.send(data);
+	});	
+});	
+
+
 
 // LOGIN
 router.post('/login', passport.authenticate('local-login', { 

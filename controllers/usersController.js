@@ -146,6 +146,11 @@ router.put('/:id', function(req, res){
 });
 
 
+
+// UPDATE SINGLE TRIP
+
+
+
 // DESTROY SINGLE TRIP
 router.delete('/:id/trips', function(req, res) {
 	// find user by id
@@ -156,12 +161,15 @@ router.delete('/:id/trips', function(req, res) {
 			if (userData.trips[i].id == req.body.trip_id) {
 				// then delete this trip from the user
 				userData.trips.id(req.body.trip_id).remove();
-				// save user
-				userData.save(function(err, data) {
-					// save trips
-					Trip.save(function(err, tripData) {
-						// redirect to user show page
-						res.redirect('/users/' + req.params.id);
+				// find the Trip in trips and remove
+				Trip.findByIdAndRemove(req.body.trip_id, function(err, dataTrip){
+					// save user
+					userData.save(function(err, data) {
+						// save trips
+						dataTrip.save(function(err, tripData) {
+							// redirect to user show page
+							res.redirect('/users/' + req.params.id);
+						});
 					});
 				});
 			}

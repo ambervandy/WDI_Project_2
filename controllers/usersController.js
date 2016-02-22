@@ -146,6 +146,29 @@ router.put('/:id', function(req, res){
 });
 
 
+// DESTROY SINGLE TRIP
+router.delete('/:id/trips', function(req, res) {
+	// find user by id
+	User.findById(req.params.id, function(err, userData) {
+		// for loop to iterate through all trips
+		for(var i = 0; i < userData.trips.length; i++) {
+			// if the trip id matches the id from the delete form page
+			if (userData.trips[i].id == req.body.trip_id) {
+				// then delete this trip from the user
+				userData.trips.id(req.body.trip_id).remove();
+				// save user
+				userData.save(function(err, data) {
+					// save trips
+					Trip.save(function(err, tripData) {
+						// redirect to user show page
+						res.redirect('/users/' + req.params.id);
+					});
+				});
+			}
+		}
+	});
+});
+
 
 // DESTROY
 router.delete('/:id', function(req, res) {
@@ -155,6 +178,7 @@ router.delete('/:id', function(req, res) {
 		res.redirect('/');
 	});	
 });
+
 
 
 

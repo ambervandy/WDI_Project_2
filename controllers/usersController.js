@@ -136,7 +136,7 @@ router.get('/:id/edit', function(req, res){
 
 
 
-// UPDATE
+// UPDATE USER
 router.put('/:id', function(req, res){
 	// update user with form req.body
     User.findByIdAndUpdate(req.params.id, req.body, function(err, data){
@@ -148,6 +148,31 @@ router.put('/:id', function(req, res){
 
 
 // UPDATE SINGLE TRIP
+router.put('/:id/trips', function(req, res) {
+	// find trip by req.params
+	Trip.findByIdAndUpdate(req.params.id, req.body, function(err, tripData) {
+		// find user by id
+		User.findById(tripData.user_id, function(err, userData) {
+			// console.log(userData);
+			// for loop to iterate through all trips
+			for(var i = 0; i < userData.trips.length; i++) {
+				// if trip id matches id from the update page
+				if (userData.trips[i].id == req.params.id) {
+					// then update the trip
+					// console.log(userData.trips[i]);
+					// save the trip
+					tripData.save(function(err, data) {
+						// save user
+						userData.save(function(err, newData) {
+							// redirect back to trip show page
+							res.redirect('/trips/' + req.params.id);
+						});	
+					});
+				}
+			}
+		});
+	});
+});
 
 
 
@@ -178,7 +203,8 @@ router.delete('/:id/trips', function(req, res) {
 });
 
 
-// DESTROY
+
+// DESTROY USER
 router.delete('/:id', function(req, res) {
 	// find user and remove by id params in url
 	User.findByIdAndRemove(req.params.id, function(err, data) {

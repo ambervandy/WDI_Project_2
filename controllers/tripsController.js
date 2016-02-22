@@ -51,29 +51,29 @@ router.get('/:id/edit', function(req, res) {
 });
 
 
-// UPDATE SPECIFIC TRIP ON USER
+// UPDATE
 // router.put('/:id', function(req, res) {
-// 	// find the trip to edit
-// 	Trip.findByIdAndUpdate(req.params.id, req.body, function(err, data) {
-// 		// find the user by the id, pass in user data
-// 		User.findByIdAndUpdate(data.user_id, { new: true }, function(err, user) {
-// 			// need to loop through all user trips to find the right one to update
-// 			for(var i = 0; i < user.trips.length; i++) {
-// 				// if trip id = id of trip then save changes
-// 				if (user.trips[i].id == req.params.id) {
-// 					// then save that trip
-// 					user.trips[i].save(function(err, newTrip) {
-// 						// then save user
-// 						user.save(function(err, newUser) {
-// 							// redirect to trip show page
-// 							res.redirect('/trips/' + req.params.id);
-// 						});
-// 					});
+// 	// console.log(req.body);
+// 	// find the trip and update with req.body from the form
+// 	Trip.findByIdAndUpdate(req.params.id, req.body, function(err, tripData) {
+// 		// find user to update
+// 		User.findById(tripData.user_id, function(err, userData) {
+// 			// console.log(userData);
+// 			// loop through all user trips to find the correct trip to update
+// 			for (var i = 0; i < userData.trips.length; i++) {
+// 				// if the id of the trip matches req.params.id
+// 				if(userData.trips[i].id == req.params.id) {
+// 					// save user with updated trip data
+// 					userData.save(function(err, data) {
+// 						// redirect back to trip page
+// 						res.redirect('/trips/' + req.params.id);
+// 					});	
 // 				}
 // 			}
 // 		});
 // 	});
 // });
+
 
 
 module.exports = router;
@@ -141,7 +141,29 @@ module.exports = router;
 // });
 
 
-
+// UPDATE SPECIFIC TRIP ON USER
+// router.put('/:id', function(req, res) {
+// 	// find the trip to edit
+// 	Trip.findByIdAndUpdate(req.params.id, req.body, function(err, data) {
+// 		// find the user by the id, pass in user data
+// 		User.findByIdAndUpdate(data.user_id, { new: true }, function(err, user) {
+// 			// need to loop through all user trips to find the right one to update
+// 			for(var i = 0; i < user.trips.length; i++) {
+// 				// if trip id = id of trip then save changes
+// 				if (user.trips[i].id == req.params.id) {
+// 					// then save that trip
+// 					user.trips[i].save(function(err, newTrip) {
+// 						// then save user
+// 						user.save(function(err, newUser) {
+// 							// redirect to trip show page
+// 							res.redirect('/trips/' + req.params.id);
+// 						});
+// 					});
+// 				}
+// 			}
+// 		});
+// 	});
+// });
 
 
 

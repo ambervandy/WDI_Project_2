@@ -6,6 +6,7 @@ var express  = require('express');
 	passport = require('passport');   
 
 
+
 // INDEX
 router.get('/', function(req, res) {
 	// check if user is logged in
@@ -19,6 +20,7 @@ router.get('/', function(req, res) {
 		});
 	});
 });
+
 
 
 // SIGN UP / NEW
@@ -42,8 +44,10 @@ router.get('/json', function(req, res) {
 });
 
 
+
 // JSON FOR SINGLE USER JSON LOCATIONS ONLY
 router.get('/:id/json', function(req, res) {
+	console.log('EDIT JSON ACCESSED');
 	// find the user by id
 	User.findById(req.params.id, function(err, data) {
 		// send json data
@@ -74,8 +78,65 @@ router.get('/logout', function(req, res) {
 
 
 
+// EDIT TRIP ROUTE
+router.get('/:id/trips/edit', function(req, res) {
+	// console.log('PARAMS: ', req.params.id);
+	// console.log('QUERY: ', req.query);
+	console.log(req.query.tripId);
+	// find trip
+	Trip.findById(req.query.tripId, function(err, data) {
+		// console.log(data);
+		res.render('trips/edit.ejs', data);
+	});
+});
+
+
+
+// UPDATE SINGLE TRIP <----------------------------  NOT WORKING YETTTTTT ONLY UPDATING TRIPS
+router.put('/:id/trips', function(req, res) {
+	// console.log(req.params.id);
+	// find user and update
+	User.findById(req.params.id, function(err, userData) {
+		// for loop to find the correct trip to update
+		for(var i = 0; i < userData.trips.length; i++) {
+			// if statement to find correct trip
+			if (userData.trips[i].id == req.body.trip_id) {
+				// console.log(req.body.trip_id);
+				// explicitly change value of destination
+				userData.trips[i].destination  = req.body.destination;
+				userData.trips[i].tripImg 	   = req.body.tripImg;
+				userData.trips[i].packing_list = req.body.packing_list;
+				userData.trips[i].date_start   = req.body.date_start;
+				userData.trips[i].date_finish  = req.body.date_finish;
+				userData.trips[i].itinerary    = req.body.itinerary;
+				userData.trips[i].different    = req.body.different;
+				userData.trips[i].trip_rating  = req.body.trip_rating;
+				userData.trips[i].lat          = req.body.lat;
+				userData.trips[i].lng          = req.body.lng;
+				// save user
+				userData.save(function(err, editedUser) {
+					// // // save trip
+					Trip.findByIdAndUpdate(req.body.trip_id, req.body, { new:true }, function(err, tripData) {
+						// save trip
+						console.log(req.body.trip_id);
+						tripData.save(function(err, newTrip) {
+							// redirect back to trip page
+							// console.log(editedUser);
+							// console.log(newTrip);
+							res.redirect('/trips/' + req.body.trip_id);
+						});
+					});
+				});
+			}
+		}
+	});
+});
+
+
+
 // SHOW
 router.get('/:id', function(req, res) {
+	console.log('USER EDIT ACCESSED');
 	// user control - get req.user from passport
 	res.locals.usertrue = (req.user.id == req.params.id);
 	// if user is logged in, then render user's show page
@@ -89,8 +150,9 @@ router.get('/:id', function(req, res) {
 
 
 
-// NEW TRIP PAGE
-router.get('/:id/trips', function(req, res) {
+// NEW TRIP RENDER PAGE
+router.get('/:id/newTrip', function(req, res) {
+	console.log('NEW TRIP ACCESSED')
 	// res.send('This works!');
 	// for that user, add the new trip
 	User.findById(req.params.id, function(err, data) {
@@ -103,8 +165,9 @@ router.get('/:id/trips', function(req, res) {
 
 
 
-// NEW TRIP ROUTE
+// NEW TRIP CREATE ROUTE
 router.post('/:id/trips', function(req, res) {
+	console.log('CREATE NEW TRIP')
 	// res.send('This works!');
 	// find user by id params
 	User.findById(req.params.id, function(err, newUser) {
@@ -125,12 +188,13 @@ router.post('/:id/trips', function(req, res) {
 
 
 
-// EDIT
+// EDIT USER
 router.get('/:id/edit', function(req, res){
+	console.log('EDIT USER');
 	// find user
 	User.findById(req.params.id, function(err, data){
 		// send to user edit page with data
-		res.render('users/edit.ejs',data);
+		res.render('users/edit.ejs', data);
 	});
 });
 
@@ -143,35 +207,6 @@ router.put('/:id', function(req, res){
     	// redirect to user's show page
     	res.redirect('/users/' + req.params.id);
     });
-});
-
-
-
-// UPDATE SINGLE TRIP
-router.put('/:id/trips', function(req, res) {
-	// find trip by req.params
-	Trip.findByIdAndUpdate(req.params.id, req.body, function(err, tripData) {
-		// find user by id
-		User.findById(tripData.user_id, function(err, userData) {
-			// console.log(userData);
-			// for loop to iterate through all trips
-			for(var i = 0; i < userData.trips.length; i++) {
-				// if trip id matches id from the update page
-				if (userData.trips[i].id == req.params.id) {
-					// then update the trip
-					// console.log(userData.trips[i]);
-					// save the trip
-					tripData.save(function(err, data) {
-						// save user
-						userData.save(function(err, newData) {
-							// redirect back to trip show page
-							res.redirect('/trips/' + req.params.id);
-						});	
-					});
-				}
-			}
-		});
-	});
 });
 
 
@@ -215,7 +250,6 @@ router.delete('/:id', function(req, res) {
 
 
 
-
 // ROUTE MIDDLEWARE TO MAKE SURE USER IS LOGGED IN
 function isLoggedIn(req, res, next) {
     // if user is authenticated in the session, carry on 
@@ -226,12 +260,26 @@ function isLoggedIn(req, res, next) {
 }
 
 
+
 // module.exports
 module.exports = router;
 
 
 
 // ========================== TRASH CAN =============================
+
+
+// UPDATE SINGLE TRIP
+// router.put('/:id/trips', function(req, res) {
+// 	User.findOneAndUpdate({
+// 		trips.id: req.body.trip_id 
+// 	}, {
+// 		$set: req.body
+// 	}, function(err, userData) {
+// 		console.log(userData)
+// 	}	
+// 	});
+// });
 
 
 // CREATE
@@ -257,5 +305,33 @@ module.exports = router;
 //   	});
 // });
 
+
+
+// UPDATE SINGLE TRIP
+// router.put('/:id/trips', function(req, res) {
+// 	// find trip by req.params
+// 	Trip.findByIdAndUpdate(req.params.id, req.body, function(err, tripData) {
+// 		// find user by id
+// 		User.findById(tripData.user_id, function(err, userData) {
+// 			// console.log(userData);
+// 			// for loop to iterate through all trips
+// 			for(var i = 0; i < userData.trips.length; i++) {
+// 				// if trip id matches id from the update page
+// 				if (userData.trips[i].id == req.params.id) {
+// 					// then update the trip
+// 					// console.log(userData.trips[i]);
+// 					// save the trip
+// 					tripData.save(function(err, data) {
+// 						// save user
+// 						userData.save(function(err, newData) {
+// 							// redirect back to trip show page
+// 							res.redirect('/trips/' + req.params.id);
+// 						});	
+// 					});
+// 				}
+// 			}
+// 		});
+// 	});
+// });
 
 

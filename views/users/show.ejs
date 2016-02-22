@@ -38,7 +38,7 @@
 	<!-- need if statement, if user id = this user can add trip -->
 	<% if (usertrue) { %>
 		<!-- Link to add a new trip -->
-	    <form action="/users/<%= users.id %>/trips">
+	    <form action="/users/<%= users.id %>/newTrip">
 		    <input type="submit" value="ADD TRIP">
 		</form>
 	<% } %>

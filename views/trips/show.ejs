@@ -65,9 +65,10 @@
 
 	<!-- need to figure out how to hide this for other users -->
 		<!-- Link to edit profile -->
-	    <form action="/trips/<%= trips.id %>/edit">
-		    <input type="submit" value="UPDATE">
-		</form>
+    <form action="/users/<%= trips.user_id %>/trips/edit">
+    	<input type="hidden" name="tripId" value="<%= trips.id %>">
+	    <button>UPDATE</button>
+	</form>
 
 	<!-- need to figure out how to hide this for other users -->
 	<form action="/users/<%= trips.user_id %>/trips?_method=DELETE" method="POST">

@@ -3,6 +3,8 @@
 	<title>MAIN / LOGIN / SIGNUP</title>
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+	<script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script type="text/javascript" src="js/welcomeIndex.js"></script>
 </head>
 <body>
 	<!-- nav bar -->
@@ -13,19 +15,19 @@
 
 	<!-- buttons for login or signup -->
 	<div id="buttonDiv">
-		<button>LOGIN</button>
-		<button>SIGN UP</button>
+		<button id="loginButton">LOGIN</button>
+		<button id="signupButton">SIGN UP</button>
 	</div>
 
-	<!-- buttons for logout or back to profile -->
-	<div id="logoutDiv">
-		<button>LOG OUT</button>
-		<button>PROFILE</button>
-	</div>
+	
 	<!-- if login == true, then only show logout link. -->
 	<!-- if login == false, then show sign up and log in forms -->
 	<% if (login) { %>
-		<a href="/users/logout">Logout</a>
+		<!-- buttons for logout or back to profile if logged in-->
+		<div id="logoutDiv">
+			<button>LOG OUT</button>
+			<button>PROFILE</button>
+		</div>
 
 	<% } else { %>	
 		<div id="signup">
@@ -46,6 +48,7 @@
 				<input type="submit">
 			</form>
 		</div>
+		
 	<% } %>
 
 

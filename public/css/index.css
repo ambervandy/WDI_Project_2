@@ -37,6 +37,9 @@ h1 {
 	display: none;
 }
 
+#logoImg {
+	margin-top: 1em;
+}
 
 button {
 	width: 25%;

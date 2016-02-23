@@ -3,6 +3,7 @@
 <head>
 	<title><%= users.username %></title>
 	<link rel="stylesheet" type="text/css" href="/css/users/show.css">
+	<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAF13D52tQ7DIimjcN7gRz1gkJTZElqPgw"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 	<script type="text/javascript" src="/js/userShow.js"></script>
@@ -10,11 +11,11 @@
 <body>
 	<!-- nav bar -->
 	<ul id="nav">
-		<li><a href="/">HOME</a></li>
-		<li><a href="/users">TRAVELERS</a></li>
-		<li><a href="/trips">TRIPS</a></li>
-		<li><a href="/users/<%= users.id %>">PROFILE</a></li>
-		<li><a href="/users/logout">LOGOUT</a></li>
+		<li><a href="/" class="navLi"><img id="logoImg" src="/images/logoBlack.png"></a></li>
+		<li><a href="/users" class="navLi">TRAVELERS</a></li>
+		<li><a href="/trips" class="navLi">TRIPS</a></li>
+		<li><a href="/users/<%= users.id %>" class="navLi">PROFILE</a></li>
+		<li><a href="/users/logout" class="navLi">LOGOUT</a></li>
 	</ul>	
 
 	<div id="profileContainer">
@@ -37,19 +38,15 @@
 
 	<!-- need if statement, if user id = this user can add trip -->
 	<% if (usertrue) { %>
-		<!-- Link to add a new trip -->
-	    <form action="/users/<%= users.id %>/newTrip">
-		    <input type="submit" value="ADD TRIP">
-		</form>
 	<% } %>
 
 	<!-- Show list of trips -->
 	<div id="tripContainer">
-		<h3>All Trips:</h3>
+		<h3>ALL TRIPS</h3>
 		<ul id="tripUl">
 			<% for(var i = 0; i < users.trips.length; i++) { %>
 				<!-- These need to link to the trip's show page -->
-				<li class="tripLi"><a href="/trips/<%= users.trips[i].id %>"><%= users.trips[i].destination %></a>
+				<li><a href="/trips/<%= users.trips[i].id %>" class="tripLi"><%= users.trips[i].destination %></a>
 					<!-- <input type="hidden" name="trip_id" value="<%= users.trips[i].id %>" /> -->
 				</li>
 			<% } %>
@@ -58,15 +55,26 @@
 
 	<!-- need if statement, if user id = this user can edit profile -->
 	<% if (usertrue) { %>
+		<!-- Link to add a new trip -->
+	    <form action="/users/<%= users.id %>/newTrip">
+		    <input type="submit" value="ADD TRIP">
+		</form>
+
 		<!-- Link to edit profile -->
-	    <form action="/users/<%= users.id %>/edit">
+	    <form id="editProfile" action="/users/<%= users.id %>/edit">
 		    <input type="submit" value="EDIT PROFILE">
 		</form>
 	<% } %>
 
-	<input id="hidden" type="hidden" value="<%= users.id %>">
 			
 </body>
+<footer>
+	<img src="/images/social2.png">
+	<img src="/images/social1.png">
+	<img src="/images/social4.png">
+	<img src="/images/social3.png">
+	<input id="hidden" type="hidden" value="<%= users.id %>">
+</footer>
 </html>
 
 

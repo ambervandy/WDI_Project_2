@@ -1,23 +1,41 @@
 <html>
 <head>
-	<title>NEW TRIPS</title>
+	<title>ADD</title>
+	<link rel="stylesheet" type="text/css" href="/css/trips/new.css">
+	<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAF13D52tQ7DIimjcN7gRz1gkJTZElqPgw"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script type="text/javascript" src="/js/new.js"></script>
 </head>
 <body>
 	<!-- nav bar -->
-	<h1>NEW TRIP works!</h1>
+	<!-- nav bar, with different links for this page -->
+	<ul id="nav">
+		<li><a href="/" class="navLi"><img id="logoImg" src="/images/logoBlack.png"></a></li>
+		<li><a href="/users" class="navLi">TRAVELERS</a></li>
+		<li><a href="/trips" class="navLi">TRIPS</a></li>
+		<li><a href="/users" class="navLi">PROFILE</a></li>
+		<li><a href="/users/logout" class="navLi">LOGOUT</a></li>
+	</ul>
+
 	<form action="/users/<%= users.id %>/trips" method="POST">
-		<input type="text" name="destination" placeholder="Destination"></br></br>
-		<input type="text" name="tripImg" placeholder="Trip Image URL"></br></br>
-		<input type="text" name="lat" placeholder="Latitude"></br></br>
-		<input type="text" name="lng" value="Longitude"></br></br>
-		<textarea name="packing_list" placeholder="Recommended Packing List"></textarea></br></br>
-		<input type="date" name="date_start"></br></br>
+		<input type="text" name="destination" placeholder="NEW DESTINATION"></br></br>
+		<input type="text" name="tripImg" placeholder="TRIP IMAGE URL"></br></br>
+		<input type="text" name="lat" placeholder="LATITUDE"></br></br>
+		<input type="text" name="lng" placeholder="LONGITUDE"></br></br>
+		<textarea name="packing_list" placeholder="RECOMMENDED PACKING LIST"></textarea></br></br>
+		<span>TRIP DATES</span></br>
+		<input type="date" name="date_start">
 		<input type="date" name="date_finish"></br></br>
-		<textarea name="itinerary" placeholder="Description/Itinerary"></textarea></br></br>
-		<textarea name="different">What would you do differently?</textarea></br></br>
-		<input type="text" name="trip_rating" placeholder="Trip Rating"></br></br>
+		<textarea name="itinerary" placeholder="ITINERARY"></textarea></br></br>
+		<textarea name="different" placeholder="WHAT WOULD YOU DO DIFFERENTLY?"></textarea></br></br>
+		<input type="text" name="trip_rating" placeholder="TRIP RATING"></br></br>
 		<input type="hidden" name="user_id" value="<%= users.id %>">
-		<input type="Submit">
+		<input type="Submit" value="ADD TRIP">
 	</form>
 </body>
+
+<!-- footer partial -->
+<% include ../partials/footer %>
+
 </html>

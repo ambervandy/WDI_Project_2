@@ -9,14 +9,7 @@
 	<script type="text/javascript" src="/js/userShow.js"></script>
 </head>
 <body>
-	<!-- nav bar -->
-	<ul id="nav">
-		<li><a href="/" class="navLi"><img id="logoImg" src="/images/logoBlack.png"></a></li>
-		<li><a href="/users" class="navLi">TRAVELERS</a></li>
-		<li><a href="/trips" class="navLi">TRIPS</a></li>
-		<li><a href="/users/<%= users.id %>" class="navLi">PROFILE</a></li>
-		<li><a href="/users/logout" class="navLi">LOGOUT</a></li>
-	</ul>	
+	<% include ../partials/navbar %>
 
 	<div id="profileContainer">
 		<div id="profileImg">
@@ -66,17 +59,11 @@
 		</form>
 	<% } %>
 
-			
-</body>
-<footer>
-	<img src="/images/social2.png">
-	<img src="/images/social1.png">
-	<img src="/images/social4.png">
-	<img src="/images/social3.png">
+	<!-- hidden inout for user id -->
 	<input id="hidden" type="hidden" value="<%= users.id %>">
-</footer>
-</html>
+			
 
+<% include ../partials/footer %>
 
 
 

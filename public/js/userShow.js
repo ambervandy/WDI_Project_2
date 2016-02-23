@@ -35,9 +35,9 @@ var addMarkers = function(map) {
 		for (var i = 0; i < result.trips.length; i++) {
 			var marker = new google.maps.Marker ({
 			    map: map,
-			    icon: 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png',
+			    icon: '/images/marker.png',
 			    position: { lat: result.trips[i].lat, lng: result.trips[i].lng },
-			    title: "My Trips!"
+			    title: result.trips[i].destination
 			});
 		};
 	});

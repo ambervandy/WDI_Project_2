@@ -27,11 +27,11 @@
 
 
 	<!-- show list of all trips -->
-	<div id="tripList">
-		<% for(var i = 0; i < trips.length; i++) { %>
-			<li><a href="/trips/<%= trips[i].id %>"><%= trips[i].destination %></a></li>
-		<% } %>
-	</div>
+		<ul id="tripList">
+			<% for(var i = 0; i < trips.length; i++) { %>
+				<li><a href="/trips/<%= trips[i].id %>"><%= trips[i].destination %></a></li>
+			<% } %>
+		</ul>
 
 	<!-- hidden input for user id -->
 	<input id="hidden" type="hidden" value="<%= trips.id %>">

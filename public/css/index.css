@@ -28,6 +28,10 @@ h1 {
 	margin-top: 3em;
 }
 
+.button1 {
+	width: 100%;
+}
+
 #buttonDiv {
 	display: none;
 }
@@ -103,10 +107,21 @@ a:visited {
 }
 
 
+@media (min-width: 580px) {  /* <----------------------- MIN-WIDTH 580px */
 
+button{
+	width: 232px;
+}
 
+input[type='submit'] {
+    width: 146px;
+}
 
+input[type='text'] {
+	width: 232px;
+}
 
+}
 
 
 

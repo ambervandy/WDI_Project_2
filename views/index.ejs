@@ -15,8 +15,13 @@
 
 	<!-- buttons for login or signup -->
 	<div id="buttonDiv">
-		<button id="loginButton">LOGIN</button>
-		<button id="signupButton">SIGN UP</button>
+		<div class="button1">
+			<button id="loginButton">LOGIN</button>
+		</div>
+		</br>
+		<div class="button1">	
+			<button id="signupButton">SIGN UP</button>
+		</div>	
 	</div>
 
 	
@@ -25,8 +30,13 @@
 	<% if (login) { %>
 		<!-- buttons for logout or back to profile if logged in-->
 		<div id="logoutDiv">
-			<button>LOG OUT</button>
-			<button>PROFILE</button>
+			<div class="button1">
+				<button>LOG OUT</button>
+			</div>	
+			</br>
+			<div class="button1">	
+				<button>PROFILE</button>
+			</div>	
 		</div>
 
 	<% } else { %>	
@@ -50,6 +60,10 @@
 				<input type="text" name="email" placeholder="EMAIL"></br></br>
 				<input type="text" name="password" placeholder="PASSWORD"></br></br>
 				<input type="submit">
+				</br>
+				</br>
+				</br>
+				<small><a href="/">NOT A MEMBER?</a></small>
 			</form>
 		</div>
 		

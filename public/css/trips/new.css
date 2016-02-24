@@ -10,6 +10,18 @@ body {
 	background-color: #f9f9f9;
 }
 
+@font-face {
+   	font-family: 'stars';
+    src: url('/fonts/fontello-6e841967/font/fontello.ttf');
+}
+
+i {
+	font-family: 'stars';
+	font-style: normal;
+	font-size: 30px;
+	color: black;
+}
+
 ul {
 	list-style: none;
 }
@@ -113,6 +125,17 @@ footer > a > img {
 }
 
 
+@media (min-width: 500px) {  /* <----------------------- MIN-WIDTH 500px */
+
+
+footer > a > img {
+	width: 40px;
+	padding: 0 1em 0 1em;
+}
+
+
+
+}
 
 
 

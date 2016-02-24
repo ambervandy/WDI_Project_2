@@ -108,6 +108,18 @@ footer > a > img {
 
 
 
+@media (min-width: 500px) {  /* <----------------------- MIN-WIDTH 500px */
+
+
+footer > a > img {
+	width: 40px;
+	padding: 0 1em 0 1em;
+}
+
+
+
+}
+
 
 
 

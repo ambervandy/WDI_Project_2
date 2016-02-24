@@ -1,18 +1,6 @@
 console.log("this works!");
 $(function() {
 
-	// change date to nicer looking format
-	var oldDate = document.getElementById("date").innerHTML;
-	// var newDate = oldDate.split("-");
-	// var newDate = new Date(oldDate);
-	// for loop it iterate through each index
-	// for (var i = 0; i < newDate.length; i++) {
-	// 	var superNew = [];
-	// 	var first = newDate[i].split("-").reverse().join();
-	// 	superNew.push(first);
-		console.log(oldDate);
-	// }
-
 
 	// Google Map Settings - create variable for the map
 	var intializeMap = function () {
@@ -32,7 +20,7 @@ $(function() {
 			var marker = new google.maps.Marker({
 				position: {lat: result.lat, lng: result.lng},
 				map: map,
-				icon: '/images/marker.png',
+				icon: 'http://res.cloudinary.com/dmjtck2cd/image/upload/v1456330609/destinations/marker.png',
 				title: result.destination
 			});
 

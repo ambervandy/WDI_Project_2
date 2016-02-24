@@ -34,7 +34,7 @@ var addMarkers = function(map) {
 		for (var i = 0; i < result.length; i++) {
 			var marker = new google.maps.Marker ({
 			    map: map,
-			    icon: '/images/marker.png',
+			    icon: 'http://res.cloudinary.com/dmjtck2cd/image/upload/v1456330609/destinations/marker.png',
 			    position: { lat: result[i].lat, lng: result[i].lng },
 			    title: result[i].destination,
 			    url: '/users/'

@@ -63,18 +63,19 @@
 	</div>
 
 
-	<!-- need to figure out how to hide this for other users -->
-		<!-- Link to edit profile -->
-    <form action="/users/<%= trips.user_id %>/trips/edit">
-    	<input type="hidden" name="tripId" value="<%= trips.id %>">
-	    <input type="submit" value="UPDATE">
-	</form>
+		<% if (usertrue) { %>
+			<!-- Link to edit profile -->
+		    <form action="/users/<%= trips.user_id %>/trips/edit">
+		    	<input type="hidden" name="tripId" value="<%= trips.id %>">
+			    <input type="submit" value="UPDATE">
+			</form>
 
-	<!-- need to figure out how to hide this for other users -->
-	<form action="/users/<%= trips.user_id %>/trips?_method=DELETE" method="POST">
-		<input type="hidden" name="trip_id" value="<%= trips.id %>">
-      	<input type="submit" value="DELETE">
-    </form>
+			<!-- need to figure out how to hide this for other users -->
+			<form action="/users/<%= trips.user_id %>/trips?_method=DELETE" method="POST">
+				<input type="hidden" name="trip_id" value="<%= trips.id %>">
+		      	<input type="submit" value="DELETE">
+		    </form>
+	    <% } %>    
 
     <input id="hidden" type="hidden" value="<%= trips.id %>">
 

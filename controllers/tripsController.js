@@ -4,12 +4,15 @@ var express  = require('express');
 	Trip	 = require('../models/trips.js');
 	User     = require('../models/users.js');
 	userData = User.User;
+	passport = require('passport');
 
 
 
 // INDEX
 router.get('/', function(req, res) {
 	console.log('TRIPS INDEX');
+	// check if user is logged in
+	res.locals.login = req.isAuthenticated();
 	Trip.find({}, function(err, data) {
 		res.render('trips/index.ejs', {
 			trips: data
@@ -40,13 +43,27 @@ router.get('/:id/json', function(req, res) {
 
 // SHOW
 router.get('/:id', function(req, res) {
-		console.log('TRIPS SHOW');
+	console.log('TRIPS SHOW');
 	Trip.findById(req.params.id, function(err, data) {
-		res.render('trips/show.ejs', {
-			trips: data
-		});
+		// user control - get req.user from passport and see if it's the same as user id
+		// console.log(req.user.id);
+		// console.log(data.user_id);
+		res.locals.usertrue = (req.user.id == data.user_id);
+			res.render('trips/show.ejs', {
+				trips: data
+			});
 	});
 });
+
+
+// ROUTE MIDDLEWARE TO MAKE SURE USER IS LOGGED IN
+function isLoggedIn(req, res, next) {
+    // if user is authenticated in the session, carry on 
+    if (req.isAuthenticated())
+        return next();
+    // if they aren't redirect them to the home page
+    res.redirect('/');
+}
 
 
 

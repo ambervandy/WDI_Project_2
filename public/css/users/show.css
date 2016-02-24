@@ -85,10 +85,16 @@ a:hover {
 .tripLi {
 	color: black;
 	text-decoration: none;
+	font-size: 1.25em;
 }
+
 
 #tripUl > li {
 	margin: 0 0 1em 0;
+}
+
+#rating {
+	float: right;
 }
 
 
@@ -132,7 +138,7 @@ h3 {
 }
 
 #tripUl {
-	padding: 0 10% 0 10%;
+	padding: 0 25% 0 25%;
 }
 
 

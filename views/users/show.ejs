@@ -48,16 +48,18 @@
 
 	<!-- need if statement, if user id = this user can edit profile -->
 	<% if (usertrue) { %>
-		<!-- Link to add a new trip -->
-	    <form action="/users/<%= users.id %>/newTrip">
-		    <input type="submit" value="ADD TRIP">
-		</form>
+	<div id="buttonHolder">
+			<!-- Link to add a new trip -->
+		    <form action="/users/<%= users.id %>/newTrip">
+			    <input type="submit" value="ADD TRIP">
+			</form>
 
-		<!-- Link to edit profile -->
-	    <form id="editProfile" action="/users/<%= users.id %>/edit">
-		    <input type="submit" value="EDIT PROFILE">
-		</form>
-	<% } %>
+			<!-- Link to edit profile -->
+		    <form id="editProfile" action="/users/<%= users.id %>/edit">
+			    <input type="submit" value="EDIT PROFILE">
+			</form>
+		<% } %>
+	</div>
 
 	<!-- hidden input for user id -->
 	<input id="hidden" type="hidden" value="<%= users.id %>">

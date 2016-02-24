@@ -7,8 +7,9 @@ var express 		= require('express');
 	session			= require('express-session');
 	port 			= process.env.PORT || 3000;
 	app				= express();
+	mongoUri        = process.env.MONGOLAB_URI || 'mongodb://localhost/grocery_app_dev';
 
-mongoose.connect('mongodb://localhost:27017/project_2');
+mongoose.connect(mongoUri);
 
 // PASSPORT
 require('./config/passport.js')(passport);

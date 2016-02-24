@@ -7,7 +7,7 @@ $(function() {
 
 		// create variable for new map
 		var map = new google.maps.Map(document.getElementById('mapImg'), {
-		    zoom: 1,
+		    zoom: 5,
 		    minZoom: 0,
 		    center: new google.maps.LatLng(24.529795, 4.206753),
 		    mapTypeId: google.maps.MapTypeId.ROADMAP

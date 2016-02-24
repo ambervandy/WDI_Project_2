@@ -2,6 +2,7 @@
 <head>
 	<title><%= trips.destination %></title>
 	<link rel="stylesheet" type="text/css" href="/css/trips/show.css">
+	<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAF13D52tQ7DIimjcN7gRz1gkJTZElqPgw"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 	<script type="text/javascript" src="/js/tripShow.js"></script>
@@ -11,7 +12,7 @@
 	<!-- need to be able to grab the user's username here -->
 	<!-- nav bar -->
 	<ul id="nav">
-		<li><a href="/">HOME</a></li>
+		<li><a href="/"><img id="logoImg" src="/images/logoBlack.png"></a></li>
 		<li><a href="/users">TRAVELERS</a></li>
 		<li><a href="/trips">TRIPS</a></li>
 		<li><a href="/users/<%= trips.user_id %>">PROFILE</a></li>
@@ -39,8 +40,7 @@
 	<!-- dates visited -->
 	<div id="dates">
 		<h3>DATES VISITED</h3>
-		<p><%= trips.date_start %> - </p>
-		<p><%= trips.date_finish %></p>
+		<p><%= trips.date_start %> - <%= trips.date_finish %></p>
 	</div>
 
 
@@ -67,7 +67,7 @@
 		<!-- Link to edit profile -->
     <form action="/users/<%= trips.user_id %>/trips/edit">
     	<input type="hidden" name="tripId" value="<%= trips.id %>">
-	    <button>UPDATE</button>
+	    <input type="submit" value="UPDATE">
 	</form>
 
 	<!-- need to figure out how to hide this for other users -->

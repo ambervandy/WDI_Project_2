@@ -1,34 +1,46 @@
 <html>
 <head>
-	<title>EDIT TRIPS</title>
+	<title>UPDATE</title>
+	<link rel="stylesheet" type="text/css" href="/css/trips/edit.css">
+	<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script type="text/javascript" src="/js/editTrip.js"></script>
 </head>
 <body>
+
+	<!-- nav bar, with different links for this page -->
+	<ul id="nav">
+		<li><a href="/" class="navLi"><img id="logoImg" src="/images/logoBlack.png"></a></li>
+		<li><a href="/users" class="navLi">TRAVELERS</a></li>
+		<li><a href="/trips" class="navLi">TRIPS</a></li>
+		<li><a href="/users/<%= id %>" class="navLi">PROFILE</a></li>
+		<li><a href="/users/logout" class="navLi">LOGOUT</a></li>
+	</ul>
 	<!-- nav bar -->
-	<h1>EDIT TRIPS works!</h1>
-	<form action="/users/<%= user_id %>/trips?_method=PUT" method="POST">
-		<span>DESTINATION:</span></br>
+	<form id="editForm" action="/users/<%= user_id %>/trips?_method=PUT" method="POST">
+		<span>DESTINATION</span></br>
 		<input type="text" name="destination" value="<%= destination %>"></br></br>
-		<span>LATITUDE:</span></br>
+		<span>LATITUDE</span></br>
 		<input type="text" name="lat" value="<%= lat %>"></br></br>
-		<span>LONGITUDE:</span></br>
+		<span>LONGITUDE</span></br>
 		<input type="text" name="lng" value="<%= lng %>"></br></br>
-		<span>TRIP IMAGE URL:</span></br>
+		<span>TRIP IMAGE URL</span></br>
 		<input type="text" name="tripImg" value="<%= tripImg %>"></br></br>
 		<!-- need to use jquery to add additional fields to add things here to a ul instead of textarea -->
-		<span>RECOMMENDED PACKING LIST:</span></br>
+		<span>RECOMMENDED PACKING LIST</span></br>
 		<textarea name="packing_list"><%= packing_list %></textarea></br></br>
-		<span>TRIP START DATE:</span></br>
+		<span>TRIP START DATE</span></br>
 		<input type="date" name="date_start" value="<%= date_start %>"></br></br>
-		<span>TRIP FINISH DATE:</span></br>
+		<span>TRIP FINISH DATE</span></br>
 		<input type="date" name="date_finish" value="<%= date_finish %>"></br></br>
-		<span>ITINERARY:</span></br>
+		<span>ITINERARY</span></br>
 		<textarea name="itinerary"><%= itinerary %></textarea></br></br>
-		<span>WHAT YOU WOULD DO DIFFERENTLY NEXT TIME:</span></br>
+		<span>WHAT WOULD YOU DO DIFFERENTLY?</span></br>
 		<textarea name="different"><%= different %></textarea></br></br>
-		<span>RATING:</span></br>
+		<span>RATING</span></br>
 		<input type="text" name="trip_rating" value="<%= trip_rating %>"></br></br>
 		<input type="hidden" name="trip_id" value="<%= id %>">
-		<input type="Submit">
+		<input type="Submit" value="UPDATE">
 	</form>
 
 

@@ -1,19 +1,34 @@
 <html>
 <head>
-	<title>ALL USERS</title>
+	<title>TRAVELERS</title>
+	<link rel="stylesheet" type="text/css" href="/css/users/index.css">
 	<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAF13D52tQ7DIimjcN7gRz1gkJTZElqPgw"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script type="text/javascript" src="/js/userIndex.js"></script>
 </head>
 <body>
+
 	<!-- nav bar -->
-	<a href="/users/logout">Logout</a>
-	<h1>ALL USERS</h1>
-	<ul>
-		<% for(var i = 0; i < users.length; i++) { %>
-			<li>
-				<a href="/users/<%= users[i].id %>"><%= users[i].username %></a>
-				<%= users[i].profileImg %>
-			</li>
-		<% } %>
-	</ul>
-</body>
-</html>
+	<% include ../partials/navbar %>
+
+	<div id="contentContainer">
+	<h1>TRAVELERS</h1>
+
+		<div class="flip-container">
+			<% for(var i = 0; i < users.length; i++) { %>
+				<div class="flipper">
+					<div class="front">
+						<img class="userImg" src="<%= users[i].profileImg %>">
+					</div>
+					<div class="back">
+						<a href="/users/<%= users[i].id %>"><%= users[i].username %></a>
+					</div>	
+				</div>
+			<% } %>
+		</div>
+	</div>
+
+
+	<!-- footer partial -->
+	<% include ../partials/footer %>

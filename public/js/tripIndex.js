@@ -36,9 +36,18 @@ var addMarkers = function(map) {
 			    map: map,
 			    icon: '/images/marker.png',
 			    position: { lat: result[i].lat, lng: result[i].lng },
-			    title: result[i].destination
+			    title: result[i].destination,
+			    url: '/users/'
 			});
+			// onclick function to map to the url of the marker
+			google.maps.event.addListener(marker, 'click', function() {
+        		window.location.href = this.url;
+   			});
 		};
+		// onclick function to bring to trip show page
+		// marker.onclick = function() {
+		// 	window.location = "/trips"
+		// }
 	});
 } // end addMarkers function
 

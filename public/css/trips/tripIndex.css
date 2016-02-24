@@ -96,7 +96,7 @@ footer {
 	text-align: center;
 }
 
-footer > img {
+footer > a > img {
 	width: 8%;
 	padding: 0 1em 0 1em;
 }

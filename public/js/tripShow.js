@@ -32,6 +32,7 @@ $(function() {
 			var marker = new google.maps.Marker({
 				position: {lat: result.lat, lng: result.lng},
 				map: map,
+				icon: '/images/marker.png',
 				title: result.destination
 			});
 

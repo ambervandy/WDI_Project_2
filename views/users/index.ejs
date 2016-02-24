@@ -15,15 +15,12 @@
 	<div id="contentContainer">
 	<h1>TRAVELERS</h1>
 
-		<div class="flip-container">
+		<div class="imgContainer">
 			<% for(var i = 0; i < users.length; i++) { %>
-				<div class="flipper">
-					<div class="front">
-						<img class="userImg" src="<%= users[i].profileImg %>">
-					</div>
-					<div class="back">
-						<a href="/users/<%= users[i].id %>"><%= users[i].username %></a>
-					</div>	
+				<div class="userImgBox">
+					<a href="/users/<%= users[i].id %>"><img class="userImg" src="<%= users[i].profileImg %>"></br>
+					<%= users[i].username %></br>
+					<span><%= users[i].trips.length %> TRIPS</span></a>
 				</div>
 			<% } %>
 		</div>
@@ -32,3 +29,24 @@
 
 	<!-- footer partial -->
 	<% include ../partials/footer %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

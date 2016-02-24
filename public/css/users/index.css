@@ -53,6 +53,12 @@ a:hover {
     text-shadow: 0 0 0.1em darkgrey;
 }
 
+
+a:visited {
+	color: black;
+}
+
+
 h1 {
 	text-align: center;
 	margin-bottom: 1em;
@@ -64,67 +70,32 @@ h1 {
 	text-align: center;
 }
 
-
-.flip-container {
+#imgContainer {
 	width: 100%;
-	height: 18em;
-    perspective: 800px;
-    position: relative;
-    z-index: 1;
-    padding: 1em;
 }
 
-.flipper {
-	text-align:center;
-	position: absolute;
-	width: 100%;
-	transform-style: preserve-3d;
-  	transition: all 1.0s linear;
+
+.userImgBox {
+	width: 32%;
+	display: inline-block;
+	margin-bottom: 2em;
 }
 
-.flipper:hover .front{
-  	transform: rotateY(-180deg);
-}
-
-.flipper:hover .back {
- 	transform: rotateY(0deg);
-}
-
-.front, .back {
-	position: absolute;
-    width: 30%;
-    height: 100%;
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-    transition: 1s;
-}
-
-.front {
-	background: #000;
-	transform: rotateY(0deg);
-}
-
-.back {
-	display: block;
-    box-sizing: border-box;
-    padding: 1em;
-    color: white;
-    text-align: center;
-    background-color: #ffffff;
-    transform: rotateY(180deg);
-    padding-bottom: 7em;
-    border: black solid 0.5px;
-}
 
 .userImg {
-	width: 95%;
+	width: 70%;
 	border: 0.5px solid black;
+	opacity: 0.8;
+}
+
+.userImg:hover {
+	opacity: 1;
 }
 
 
 footer {
 	width: 100%;
-	margin: 10em 0 3em 0;
+	margin: 6em 0 3em 0;
 	text-align: center;
 }
 

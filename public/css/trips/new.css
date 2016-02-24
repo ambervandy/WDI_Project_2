@@ -71,15 +71,24 @@ form {
 	margin: 8em 0 1em 0;
 }
 
+#dates {
+	width: 50%;
+	margin-left: 25%;
+}
+
+.dateInput {
+	display: inline;
+}
 
 #editForm {
 	padding-top: 8em;
 }
 
 input[type="text"], textarea {
-	width: 80%;
+	width: 70%;
 	padding: 1em;
 	margin: 0.2em;
+	border: black 0.5px solid;
 }
 
 input[type='submit'], input[type='text']:hover {

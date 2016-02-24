@@ -141,18 +141,30 @@ footer > a > img {
 
 @media (min-width: 500px) {  /* <----------------------- MIN-WIDTH 500px */
 
-
 footer > a > img {
 	width: 40px;
 	padding: 0 1em 0 1em;
 }
 
-
-
 }
 
 
+@media (min-width: 800px) {  /* <----------------------- MIN-WIDTH 800px */
 
+#tripImgContainer > img {
+	width: 722px;
+}
+
+}
+
+@media (min-width: 900px) {  /* <----------------------- MIN-WIDTH 900px */
+
+#mapImg {
+	width: 450px;
+}
+
+
+}
 
 
 

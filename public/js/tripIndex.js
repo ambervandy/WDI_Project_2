@@ -7,7 +7,7 @@ $(function() {
 
 		// create variable for new map
 		var map = new google.maps.Map(document.getElementById('mapImg'), {
-		    zoom: 5,
+		    zoom: 2,
 		    minZoom: 0,
 		    center: new google.maps.LatLng(24.529795, 4.206753),
 		    mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -34,7 +34,7 @@ var addMarkers = function(map) {
 		for (var i = 0; i < result.length; i++) {
 			var marker = new google.maps.Marker ({
 			    map: map,
-			    icon: 'http://res.cloudinary.com/dmjtck2cd/image/upload/v1456330609/destinations/marker.png',
+			    icon: 'https://res.cloudinary.com/dmjtck2cd/image/upload/v1456330609/destinations/marker.png',
 			    position: { lat: result[i].lat, lng: result[i].lng },
 			    title: result[i].destination,
 			    url: '/users/'

@@ -20,7 +20,7 @@ $(function() {
 			var marker = new google.maps.Marker({
 				position: {lat: result.lat, lng: result.lng},
 				map: map,
-				icon: 'http://res.cloudinary.com/dmjtck2cd/image/upload/v1456330609/destinations/marker.png',
+				icon: 'https://res.cloudinary.com/dmjtck2cd/image/upload/v1456330609/destinations/marker.png',
 				title: result.destination
 			});
 

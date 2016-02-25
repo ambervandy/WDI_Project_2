@@ -23,6 +23,7 @@ ul {
 	z-index: 10;
 	background-color: white;
 	opacity: 0.8;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 #nav > li {
@@ -63,6 +64,8 @@ a:hover {
 	width: 40%;
 	border: solid 0.5px black;
 	margin-bottom: 1em;
+	border-radius: 2%;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 #map-Container {
@@ -80,6 +83,8 @@ a:hover {
 	width: 85%;
 	display: inline-block;
 	border: solid 0.5px black;
+	border-radius: 2%;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 .tripLi {
@@ -93,7 +98,12 @@ a:hover {
 	margin: 0 0 1em 0;
 }
 
-#rating {
+.rating {
+	display: inline;
+}
+
+i > img {
+	width: 8%;
 	float: right;
 }
 
@@ -112,13 +122,14 @@ input[type="submit"] {
 	background: transparent;
 	border: 4px black solid;
 	border-radius: 3%;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 
 input[type="submit"]:hover {
 	background-color: #444444;
 	color: white;
-	box-shadow: 0 0 0.25em rgba(204, 204, 204, 0.9);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 
@@ -162,6 +173,11 @@ footer > a > img {
 }
 
 
+i > img {
+	width: 10%;
+}
+
+
 footer > a > img {
 	width: 40px;
 	padding: 0 1em 0 1em;
@@ -180,6 +196,14 @@ footer > a > img {
 
 }
 
+
+@media (min-width: 600px) { /* <----------------------- MIN-WIDTH 600px */
+
+i > img {
+	width: 30px;
+}
+
+}
 
 @media (min-width: 700px) { /* <----------------------- MIN-WIDTH 700px */
 

@@ -42,6 +42,8 @@ app.use(function(req, res, next) {
 
 // SHOW WELCOME PAGE
 app.get('/', function(req, res) {
+	// check if user is logged in
+	res.locals.login = req.isAuthenticated();
 	res.render('index.ejs');
 });
 

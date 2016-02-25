@@ -28,13 +28,21 @@
 		<!-- Page title -->
 		<div id="tripInfo">
 			<h1><%= trips.destination %></h1>
-			<div><%= trips.trip_rating %></div>
+			<!-- <div><%= trips.trip_rating %></div> -->
+		</div>
+
+		<div id="rating">
+			<i><img id="1" src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456354086/destinations/star.png"></i>
+			<i><img id="2" src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456354086/destinations/star.png"></i>
+			<i><img id="3" src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456354086/destinations/star.png"></i>
+			<i><img id="4" src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456354086/destinations/star.png"></i>
+			<i><img id="5" src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456354086/destinations/star.png"></i>
 		</div>
 	</div>
 
 	<!-- trip img -->
 	<div id="tripImgContainer">
-		<img src="<%= trips.tripImg %>" >
+		<img id="tripImage" src="<%= trips.tripImg %>" >
 	</div>
 
 	<!-- dates visited -->

@@ -39,7 +39,10 @@ var addMarkers = function(map) {
 			    position: { lat: result.trips[i].lat, lng: result.trips[i].lng },
 			    title: result.trips[i].destination
 			});
+			
+
 		};
+		
 	});
 } // end addMarkers function
 

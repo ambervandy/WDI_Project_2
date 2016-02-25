@@ -23,6 +23,7 @@ ul {
 	z-index: 10;
 	background-color: white;
 	opacity: 0.8;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 #nav > li {
@@ -64,6 +65,18 @@ a:hover {
 	width: 50%;
 	display: inline-block;
 	border: solid 1px black;
+	border-radius: 1%;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+#rating {
+	width: 100%;
+	/*background-color: white;*/
+}
+
+i > img {
+	width: 5%;
+	padding: 1em 0 1em 0;
 }
 
 #tripImgContainer {
@@ -77,6 +90,8 @@ a:hover {
 #tripImgContainer > img {
 	width: 90%;
 	border: solid 1px black;
+	border-radius: 1%;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 #dates, #packingList, #itinerary, #different {
@@ -116,6 +131,7 @@ input[type="submit"] {
 	background: transparent;
 	border: 4px black solid;
 	border-radius: 3%;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 
@@ -148,6 +164,14 @@ footer > a > img {
 
 }
 
+
+@media (min-width: 500px) {  /* <----------------------- MIN-WIDTH 500px */
+
+i > img {
+	width: 37.5px;
+}
+
+}
 
 @media (min-width: 800px) {  /* <----------------------- MIN-WIDTH 800px */
 

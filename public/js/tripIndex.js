@@ -44,10 +44,7 @@ var addMarkers = function(map) {
         		window.location.href = this.url;
    			});
 		};
-		// onclick function to bring to trip show page
-		// marker.onclick = function() {
-		// 	window.location = "/trips"
-		// }
+	
 	});
 } // end addMarkers function
 

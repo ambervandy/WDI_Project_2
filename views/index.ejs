@@ -12,33 +12,38 @@
 		<h1>WANDERSHARE</h1>
 	</div>
 
-	<!-- buttons for login or signup -->
-	<div id="buttonDiv">
-		<div class="button1">
-			<button id="loginButton">LOGIN</button>
-		</div>
-		</br>
-		<div class="button1">	
-			<button id="signupButton">SIGN UP</button>
-		</div>	
-	</div>
-
 	
 	<!-- if login == true, then only show logout link. -->
 	<!-- if login == false, then show sign up and log in forms -->
 	<% if (login) { %>
 		<!-- buttons for logout or back to profile if logged in-->
 		<div id="logoutDiv">
-			<div class="button1">
-				<button>LOG OUT</button>
-			</div>	
+
+			<!-- logout button -->
+			<form class="button1" action="/users/logout">
+    			<input type="submit" value="LOG OUT">
+			</form>
 			</br>
-			<div class="button1">	
-				<button>PROFILE</button>
-			</div>	
+
+			<!-- back to profile button -->
+			<form class="button1" action="/users/logout">
+    			<input type="submit" value="PROFILE">
+			</form>
 		</div>
 
 	<% } else { %>	
+		<!-- buttons for login or signup -->
+		<div id="buttonDiv">
+			<div class="button1">
+				<button id="loginButton">LOGIN</button>
+			</div>
+			</br>
+			<div class="button1">	
+				<button id="signupButton">SIGN UP</button>
+			</div>	
+		</div>
+
+		<!-- signup form -->
 		<div id="signup">
 			<form action="/users" method="POST">
 				<input type="text" name="username" placeholder="USERNAME"></br></br>
@@ -53,7 +58,7 @@
 		</div>
 		</br></br>
 
-
+		<!-- login form -->
 		<div id="login">
 			<form action="/users/login" method="POST">
 				<input type="text" name="email" placeholder="EMAIL"></br></br>

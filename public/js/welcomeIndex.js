@@ -2,14 +2,11 @@
 
 $(function() {
 
-// if logged in then show only the logout and profile buttons - if not, then show others
-// if (login) {
 	// fade in signup/login elements and logohead
-	// $("#logoHead").fadeIn("slow");
-	// $("#logoutDiv").fadeIn("slow");
-// }
+	$("#logoHead").fadeIn("slow");
+	$("#logoutDiv").fadeIn("slow");
 
-// else {
+
 
 	// fade in signup/login elements and logohead
 	setTimeout(function() {
@@ -37,7 +34,24 @@ $(function() {
 	});
 
 
-// }
+
+
+
+
+
+
+
+
+
 
 
 });  // <-------------------------------------- END DOC.READY
+
+
+
+
+
+
+
+
+

@@ -23,6 +23,7 @@ ul {
 	z-index: 10;
 	background-color: white;
 	opacity: 0.8;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 #nav > li {
@@ -68,6 +69,8 @@ h1 {
 	width: 75%;
 	display: inline-block;
 	border: solid 0.5px black;
+	border-radius: 1%;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 

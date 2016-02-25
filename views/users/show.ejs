@@ -29,9 +29,6 @@
 		<div id="userMap"></div>
 	</div>	
 
-	<!-- need if statement, if user id = this user can add trip -->
-	<% if (usertrue) { %>
-	<% } %>
 
 	<!-- Show list of trips -->
 	<div id="tripContainer">
@@ -39,8 +36,55 @@
 		<ul id="tripUl">
 			<% for(var i = 0; i < users.trips.length; i++) { %>
 				<!-- These need to link to the trip's show page -->
-				<li><a href="/trips/<%= users.trips[i].id %>" class="tripLi"><span><%= users.trips[i].destination %>: </span><span id="rating"><%=users.trips[i].trip_rating %></span></a>
-					<!-- <input type="hidden" name="trip_id" value="<%= users.trips[i].id %>" /> -->
+				<li><a href="/trips/<%= users.trips[i].id %>" class="tripLi"><span><%= users.trips[i].destination %> </span>
+					
+					<% if (users.trips[i].trip_rating == 1) { %>
+						<div class="rating">
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456354086/destinations/star.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456354086/destinations/star.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456354086/destinations/star.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456354086/destinations/star.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456355457/destinations/starSolid2.png"></i>
+						</div>	
+					<% } %>	
+					<% if (users.trips[i].trip_rating == 2) { %>
+						<div class="rating">
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456354086/destinations/star.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456354086/destinations/star.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456354086/destinations/star.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456355457/destinations/starSolid2.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456355457/destinations/starSolid2.png"></i>
+						</div>
+					<% } %>
+					<% if (users.trips[i].trip_rating == 3) { %>
+						<div class="rating">
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456354086/destinations/star.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456354086/destinations/star.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456355457/destinations/starSolid2.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456355457/destinations/starSolid2.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456355457/destinations/starSolid2.png"></i>
+						</div>
+					<% } %>
+					<% if (users.trips[i].trip_rating == 4) { %>
+						<div class="rating">
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456354086/destinations/star.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456355457/destinations/starSolid2.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456355457/destinations/starSolid2.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456355457/destinations/starSolid2.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456355457/destinations/starSolid2.png"></i>
+						</div>
+					<% } %>
+					<% if (users.trips[i].trip_rating == 5) { %>
+						<div class="rating">
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456355457/destinations/starSolid2.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456355457/destinations/starSolid2.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456355457/destinations/starSolid2.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456355457/destinations/starSolid2.png"></i>
+							<i><img src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1456355457/destinations/starSolid2.png"></i>
+						</div>
+					<% } %>
+				</a>
+					<input type="hidden" name="trip_id" value="<%= users.trips[i].id %>" />
 				</li>
 			<% } %>
 		<ul>

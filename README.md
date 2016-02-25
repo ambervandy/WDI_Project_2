@@ -1,7 +1,7 @@
 # WDI_Project_2 - Wandershare
 
-Link to project(https://wandershare.herokuapp.com/)
-Link to repo(https://github.com/ambervandy/WDI_Project_2)
+(https://wandershare.herokuapp.com/ "Link to project")
+(https://github.com/ambervandy/WDI_Project_2 "Link to repo")
 
 ##Description
 Wandershare is an app that allows users to post information and images about their travels in a way that’s instantly sharable and digestible. Users can log in, and see what trips friends have taken and click to learn more about each trip, including: dates traveled, trip itinerary, recommended packing list, and more.
